@@ -28,12 +28,26 @@ export default function RelatedProducts() {
   var settings = {
     dots: false,
     infinite: true,
-    speed: 300,
+    speed: 400,
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 2000 ,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   };
   return (
     <div className="container related-products-wrapper">

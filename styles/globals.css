@@ -602,7 +602,7 @@ input::-webkit-inner-spin-button {
   color: #858585;
 }
 
-.makeup-category-link:hover ~ .category-catalog,
+.parent-category-link:hover ~ .category-catalog,
 .category-catalog:hover {
   visibility: visible;
   opacity: 1;

@@ -1,6 +1,6 @@
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
-function BreadcrumbExample() {
+function Breadcrumbs() {
   return (
     <Breadcrumb className='breadcrumbs'>
       <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
@@ -12,4 +12,4 @@ function BreadcrumbExample() {
   );
 }
 
-export default BreadcrumbExample;
+export default Breadcrumbs;

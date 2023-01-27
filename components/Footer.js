@@ -229,7 +229,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="container">
-          <div className="row">
+          <div className="row pb-4">
             <div className="col-12 col-lg-auto ps-0 d-flex align-items-center justify-content-center mb-3 mb-lg-0">
               <Image className="" src={require("/public/img/main-logo.svg")} />
             </div>

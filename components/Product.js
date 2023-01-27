@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import ProductImages from "./ProductImages";
 import ProductTitleInfo from "./ProductTitleInfo";
 
-export default function Product() {
+export default function Product({ productName }) {
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -71,12 +71,12 @@ export default function Product() {
             />
           </Slider>
         </div>
-        <Link href="/product" className="product-category">
+        <Link href="/" className="product-category">
           Make Up
         </Link>
-        <a href="#f" className="product-title d-block">
-          Sexy Armor Concealer
-        </a>
+        <Link href="/product" className="product-title d-block">
+          {productName}
+        </Link>
         <p className="product-price">$60.00</p>
         <button className="btn favourite-btn">
           <Image src={require("/public/img/heart.svg")} alt="favourite" />
@@ -92,12 +92,14 @@ export default function Product() {
       >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <div className="row px-3 py-4">
-            <div className="col-12 col-md-6">
-              <ProductImages />
-            </div>
-            <div className="col-12 col-md-6">
-              <ProductTitleInfo />
+          <div className="container">
+            <div className="row px-3 py-4">
+              <div className="col-12 col-md-6">
+                <ProductImages />
+              </div>
+              <div className="col-12 col-md-6">
+                <ProductTitleInfo />
+              </div>
             </div>
           </div>
         </Modal.Body>

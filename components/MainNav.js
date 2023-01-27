@@ -44,8 +44,10 @@ function MainNav() {
     event.preventDefault();
     setShowNav(true);
   };
+
+  const [isLogged, setIsLogged] = useState(false);
   return (
-    <Navbar expand="lg" className="p-lg-0">
+    <Navbar expand="lg" className="p-lg-1 p-0">
       <Container className="position-relative main-nav d-flex justify-content-lg-end flex-nowrap">
         <button
           className="btn p-1 me-2 d-block d-lg-none"
@@ -58,14 +60,14 @@ function MainNav() {
             alt=""
           />
         </button>
-        <Navbar.Brand href="#home" className="main-logo">
+        <Link href="/" className="main-logo">
           <Image
             src={require("/public/img/main-logo.svg")}
             width={142}
             height={36}
             alt="logo"
           />
-        </Navbar.Brand>
+        </Link>
         <Nav className="d-flex flex-row align-items-center position-relative">
           <Nav.Link
             className="main-nav-link vms-4 ms-lg-3"
@@ -134,16 +136,36 @@ function MainNav() {
         <Modal.Body>
           <ul className="list-unstyled d-flex flex-column nav">
             <li className="nav-item">
-              <Link href='#' className="nav-link ps-0 text-uppercase category-link">Make up</Link>
+              <Link
+                href="#"
+                className="nav-link ps-0 text-uppercase category-link"
+              >
+                Make up
+              </Link>
             </li>
             <li className="nav-item">
-              <Link href='#' className="nav-link ps-0 text-uppercase category-link">skin care</Link>
+              <Link
+                href="#"
+                className="nav-link ps-0 text-uppercase category-link"
+              >
+                skin care
+              </Link>
             </li>
             <li className="nav-item">
-              <Link href='#' className="nav-link ps-0 text-uppercase category-link">hair care</Link>
+              <Link
+                href="#"
+                className="nav-link ps-0 text-uppercase category-link"
+              >
+                hair care
+              </Link>
             </li>
             <li className="nav-item">
-              <Link href='#' className="nav-link ps-0 text-uppercase category-link">fragrance</Link>
+              <Link
+                href="#"
+                className="nav-link ps-0 text-uppercase category-link"
+              >
+                fragrance
+              </Link>
             </li>
           </ul>
         </Modal.Body>
@@ -201,18 +223,42 @@ function MainNav() {
       {/* Profile Modal */}
       <Modal
         show={showProfile}
-        onHide={() => setShowProfile(false)}
+        onHide={() => { setIsLogged(true); setShowProfile(false)}}
         dialogClassName="modal-90w"
         aria-labelledby="example-custom-modal-styling-title"
         className="cart-modal profile-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
-            MY ACCOUNT
+            {isLogged ? "MY ACCOUNT" : "SIGN UP"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
+            {!isLogged && (
+              <>
+                <label htmlFor="user-fName">FIRST NAME*</label>
+                <input
+                  className="form-control mb-2"
+                  id="user-fName"
+                  type="text"
+                  name="fName"
+                  required
+                  placeholder="Enter please your first name"
+                  autocomplete="on"
+                />
+                <label htmlFor="user-lName">LAST NAME*</label>
+                <input
+                  className="form-control mb-2"
+                  id="user-lName"
+                  type="lName"
+                  name="lName"
+                  required
+                  placeholder="Enter please your last name"
+                  autocomplete="on"
+                />
+              </>
+            )}
             <label htmlFor="user-email">EMAIL*</label>
             <input
               className="form-control mb-2"
@@ -233,33 +279,46 @@ function MainNav() {
               placeholder="••••••"
               autocomplete="on"
             />
-            <button className="btn cart-modal-btn my-3">LOGIN</button>
+            {isLogged && (
+              <button className="btn cart-modal-btn my-3">LOGIN</button>
+            )}
+            {!isLogged && (
+              <button className="btn cart-modal-btn my-3 text-text-uppercase">Sign up</button>
+            )}
             <Link
               href="/"
               className="calculate-shipping btn p-0 text-decoration-underline mb-2"
             >
               RETURN TO STORE
             </Link>
-            <Link href="/" className="btn p-0 desc mb-0">
-              Forgot Your Password?
-            </Link>
+            {isLogged && (
+              <Link href="/" className="btn p-0 desc mb-0">
+                Forgot Your Password?
+              </Link>
+            )}
           </div>
-          <div className="divider-border"></div>
-          <h3>SIGN UP</h3>
-          <p className="title-desc">Enjoy the benefits of registering:</p>
-          <ul class="mb-20 ps-3">
-            <li class="mb-2 desc">
-              Order: view Order History, track and manage purchases and returns
-            </li>
-            <li class="mb-2 desc">
-              Address Book and Card Wallet: safely store delivery and payment
-              details for faster checkout
-            </li>
-            <li class="mb-2 desc">
-              Saved for later: wish list your preferred items and track their
-              availability
-            </li>
-          </ul>
+          {isLogged && (
+            <>
+              <div className="divider-border"></div>
+              <h3>SIGN UP</h3>
+              <p className="title-desc">Enjoy the benefits of registering:</p>
+              <ul class="mb-20 ps-3">
+                <li class="mb-2 desc">
+                  Order: view Order History, track and manage purchases and
+                  returns
+                </li>
+                <li class="mb-2 desc">
+                  Address Book and Card Wallet: safely store delivery and
+                  payment details for faster checkout
+                </li>
+                <li class="mb-2 desc">
+                  Saved for later: wish list your preferred items and track
+                  their availability
+                </li>
+              </ul>
+              <button onClick={() => setIsLogged(false)} className="btn cart-modal-btn my-3">Sign up now</button>
+            </>
+          )}
         </Modal.Body>
       </Modal>
 
